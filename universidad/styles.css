@@ -12,26 +12,21 @@ body {
   border-radius: 12px;
   padding: 18px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  margin: 14px 0;
+  margin: 15px 0;
+  text-align: center;
 }
-.sesion {
-text-align: center;
-}
-.sesiontext{
-    text-align: center;
-}
-.usuario {
- text-align: center;
-
-}
-.contrasena{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;   
-}
-     
+  
 input {
+  display: block;
   width: 250px;
+  margin: 0 auto;
   padding: 8px;
+  text-align: center;
+}
+
+.boton {
+  display: block;
+  width: 100px;
+  margin: 15px auto;
+  text-align: center;
 }
