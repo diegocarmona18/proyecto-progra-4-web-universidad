@@ -24,8 +24,14 @@ text-align: center;
  text-align: center;
 
 }
-.contraseña{
+.contrasena{
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;   
+}
+     
+input {
+  width: 250px;
+  padding: 8px;
 }

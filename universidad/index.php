@@ -13,7 +13,7 @@
  <h2 class="sesiontext">Usuario</h2>
  <input type="text" name="usuario" class="usuario">
  <h2 class="sesiontext">Contraseña</h2>
- <input type="password" name="contraseña" class="contraseña">
+ <input type="password" name="contraseña" class="contrasena">
  <button class="boton">Iniciar Sesion</button>
     </div>
 </body>
