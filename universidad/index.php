@@ -7,14 +7,12 @@
 </head>
 <body>
     <div class="card">
-        <h1 class="sesion">INICIO DE SESIÓN</h1>
- <h2 class="sesiontext">Usuario</h2>
- <input type="text" name="usuario" class="usuario">
- <h2 class="sesiontext">Contraseña</h2>
- <input type="password" name="contrasena" class="contraseña">
- <button class="boton">Iniciar Sesion</button>
- <a href="registro.php">Registrarse</a>
- <a href="cambio.php">Olvidé mi contraseña</a>
+        <h1 class="sesion">INICIO DE SESION</h1>
+        <h2 class="sesiontext">Usuario</h2>
+        <input type="text" name="usuario" class="usuario">
+        <h2 class="sesiontext">Contraseña</h2>
+        <input type="password" name="contrasena" class="contrasena">
+        <button class="boton">Iniciar Sesion</button>
     </div>
 </body>
 </html>
