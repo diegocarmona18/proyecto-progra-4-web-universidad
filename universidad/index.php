@@ -13,6 +13,7 @@
         <h2 class="sesiontext">Contraseña</h2>
         <input type="password" name="contrasena" class="contrasena">
         <button class="boton">Iniciar Sesion</button>
+        <a href="registro.php">Registrarse</a>
     </div>
 </body>
 </html>
