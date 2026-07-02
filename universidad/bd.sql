@@ -12,3 +12,4 @@ CREATE TABLE
         contrasena VARCHAR(100) NOT NULL,
         creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
+

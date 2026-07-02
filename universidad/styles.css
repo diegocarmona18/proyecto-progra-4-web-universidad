@@ -1,13 +1,12 @@
-
 body {
   font-family: Arial, sans-serif;
   max-width: 500px;
   margin: 15px auto;
   padding: 0 15px;
-  background: #f6f8fb;
-  color: #172033;
+  background: #0d1b2a;
+  color:#0d1b2a;
 }
- .card {
+.card {
   background: #fff;
   border-radius: 12px;
   padding: 18px;
@@ -15,35 +14,34 @@ body {
   margin: 200px 0;
 }
 .sesion {
-text-align: center;
+  text-align: center;
 }
-.sesiontext{
-    text-align: center;
+.sesiontext {
+  text-align: center;
 }
 .usuario {
- text-align: center;
-
+  text-align: center;
 }
-.contraseña{
+.contraseña {
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
-     
+
 input {
   width: 250px;
   padding: 8px;
   display: block;
   margin: 0 auto 12px;
 }
-.boton {
-  background: #0a95ff;
+.boton_iniciar {
+  background: #000000;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 60px;
   border-radius: 6px;
   cursor: pointer;
-    display: block;
+  display: block;
   margin: 0 auto 12px;
 }
 .cedula {
@@ -53,22 +51,48 @@ input {
 .correo {
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   text-align: center;
 }
 .contraseña {
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   text-align: center;
 }
-.volver {
-  background-color: #0a95ff;
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.boton_volver,
+.boton_registrarse {
+  background: #000000;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 0 36px;
   border-radius: 6px;
   cursor: pointer;
-    display: block;
-  margin: 0 auto 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 150px;
+  height: 44px;
+  line-height: 1;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+.boton_volver:hover,
+.boton_registrarse:hover {
+  background: #333333;
+}
+
+.enla_registrarse {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  text-decoration: none;
 }

@@ -20,3 +20,4 @@ try {
     die('Error de conexion: ' . htmlspecialchars($e->getMessage()));
 }
 ?>
+
