@@ -7,13 +7,15 @@
 </head>
 <body>
     <div class="card">
-        <h1 class="sesion">INICIO DE SESION</h1>
+        <form action="consulta.php" method="post">
+        <h1 class="sesion">INICIO DE SESIÓN</h1>
         <h2 class="sesiontext">Usuario</h2>
-        <input type="text" name="usuario" class="usuario">
+        <input type="text" name="usuario" class="usuario" required>
         <h2 class="sesiontext">Contraseña</h2>
-        <input type="password" name="contrasena" class="contrasena">
-        <button class="boton">Iniciar Sesion</button>
-        <a href="registro.php">Registrarse</a>
+        <input type="password" name="contrasena" class="contraseña" required>
+        <button class="boton_iniciar" type="submit">Iniciar Sesion</button>
+        <a href="registro.php" class="enla_registrarse">Registrarse</a>
+    </form>
     </div>
 </body>
 </html>
