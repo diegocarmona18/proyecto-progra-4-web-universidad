@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+$error = "";
+
+if (isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+    unset($_SESSION['error']);
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,9 +18,16 @@
 </head>
 
 <body>
-    <div class="card">
+       <div class="card">
         <form action="consulta.php" method="post">
         <h1 class="sesion">INICIO DE SESIÓN</h1>
+
+        <?php if ($error != "") { ?>
+                <div>
+                    <?php echo htmlspecialchars($error); ?>
+                </div>
+            <?php } ?>
+
         <h2 class="sesiontext">Usuario</h2>
         <input type="text" name="usuario" class="usuario" required>
         <h2 class="sesiontext">Contraseña</h2>
