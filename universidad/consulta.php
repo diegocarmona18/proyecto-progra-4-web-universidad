@@ -3,7 +3,7 @@ require_once 'config.php';
 session_start();
 $usuario_input = isset($_POST['usuario']) ? trim($_POST['usuario']) : '';
 $contrasena_input = isset($_POST['contrasena']) ? $_POST['contrasena'] : '';
- $_SESSION['intentos'] = 0;;
+$_SESSION['intentos'] = 0;;
 
 if ($usuario_input === '' || $contrasena_input === '') {
     $error = 'Usuario o contraseña faltantes';
@@ -21,8 +21,8 @@ if ($usuario_input === '' || $contrasena_input === '') {
     }
     else {
         $_SESSION['error'] = 'Usuario o contraseña incorrectos';
-         $_SESSION['intentos']++;
-        echo "Intentos:".$intentos;
+    $_SESSION['intentos']++;
+        echo "Intentos:".$_SESSION['intentos'];
         header('Location: index.php');  
     
 }
@@ -34,4 +34,3 @@ if ($usuario_input === '' || $contrasena_input === '') {
         ##exit($error);
     }
 }
-z
