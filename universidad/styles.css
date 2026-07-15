@@ -1,5 +1,6 @@
 body {
   font-family: Arial, sans-serif;
+
   max-width: 500px;
   margin: 15px auto;
   padding: 0 15px;
@@ -43,10 +44,34 @@ input {
   cursor: pointer;
   display: block;
   margin: 0 auto 12px;
+
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f4c81, #1f6f9f 45%, #e8f1f8);
+  color: #20364f;
 }
-.cedula {
+
+.container {
+  padding: 24px 16px;
+  min-height: 100vh;
   display: flex;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.card {
+  border: none;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+  width: 100%;
+
+}
+
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #c7d6e4;
 }
 .correo {
   display: flex;
@@ -95,4 +120,69 @@ input {
   text-align: center;
   margin-top: 12px;
   text-decoration: none;
+
+.form-control:focus {
+  border-color: #1f6f9f;
+  box-shadow: 0 0 0 0.2rem rgba(31, 111, 159, 0.2);
+}
+
+.btn-dark {
+  border-radius: 10px;
+  background-color: #0f4c81;
+  border-color: #0f4c81;
+}
+
+.btn-dark:hover {
+  background-color: #0b3d66;
+  border-color: #0b3d66;
+}
+
+.btn-outline-dark {
+  border-radius: 10px;
+  color: #0f4c81;
+  border-color: #0f4c81;
+}
+
+.btn-outline-dark:hover {
+  background-color: #0f4c81;
+  color: #fff;
+}
+
+.alert {
+  border-radius: 10px;
+}
+
+h1, h2, label {
+  color: #0f4c81;
+}
+
+img {
+  display: block;
+  margin: 0 auto 15px auto;
+  max-width: 180px;
+  height: auto;
+}
+
+@media (max-width: 576px) {
+  .card {
+    border-radius: 14px;
+  }
+
+  .card-body {
+    padding: 1.25rem;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .d-grid.gap-2.d-md-flex.justify-content-md-center {
+    display: grid !important;
+    gap: 0.75rem;
+  }  
+}
 }

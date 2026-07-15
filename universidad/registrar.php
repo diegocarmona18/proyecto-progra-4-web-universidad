@@ -9,13 +9,21 @@ $contrasena = isset($_POST['contrasena']) ? $_POST['contrasena'] : '';
 
 if (empty($cedula) || $usuario === '' || $correo === false || $contrasena === '') {
 	header('Location: registro.php?error=missing');
+
 	exit;//arreglar esto 
+
+	exit;
+
 }
 
 // Hashear la contraseña antes de guardar
 $hashed = password_hash($contrasena, PASSWORD_DEFAULT);
 
+
 $sql = 'INSERT INTO inicio_sesion (cedula, usuario, correo, contrasena, estado, intentos) VALUES (:cedula, :usuario, :correo, :contrasena, :estado, :intentos)';
+
+$sql = 'INSERT INTO inicio_sesion (cedula, usuario, correo, contrasena) VALUES (:cedula, :usuario, :correo, :contrasena)';
+
 $stmt = $pdo->prepare($sql);
 
 try {
@@ -26,6 +34,7 @@ try {
 		'contrasena' => $hashed,
 		'estado' => 'A', // Por defecto, el usuario está activo
 		'intentos' => 0, // Inicialmente, no hay intentos fallidos
+
 	]);
 	header('Location: index.php');
 	exit;
