@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -10,27 +10,47 @@
     <title>Registro de Usuario</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css?v=2">
 </head>
 
 <body>
-    <div class="card">
-        <form action="registrar.php" method="post">
-            <h1 class="sesion">REGISTRO DE USUARIO</h1>
-            <h2 class="sesiontext">Numero de cedúla</h2>
-            <input type="text" name="cedula" class="cedula" placeholder="Cedula" required>
-            <h2 class="sesiontext">Usuario</h2>
-            <input type="text" name="usuario" class="usuario" placeholder="Usuario" required>
-            <h2 class="sesiontext">Correo electronico</h2>
-            <input type="email" name="correo" class="correo" placeholder="Correo" required>
-            <h2 class="sesiontext">Contraseña</h2>
-            <input type="password" name="contrasena" class="contraseña" placeholder="Contraseña" required>
-            <div class="form-actions">
-                <button class="boton_registrarse" type="submit">Registrarse</button>
-                <a class="boton_volver" href="index.php">Volver</a>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100 py-4">
+        <div class="card shadow-sm w-100" style="max-width: 480px;">
+            <div class="card-body p-4">
+                <form action="registrar.php" method="post">
+                    <img src="../img/logo.png" alt="Logo de la universidad" class="img-fluid mb-3 d-block mx-auto" style="max-width: 180px;">
+                    <h1 class="h3 text-center mb-4">REGISTRO DE USUARIO</h1>
+
+                    <div class="mb-3">
+                        <label for="cedula" class="form-label">Número de cédula</label>
+                        <input type="text" name="cedula" id="cedula" class="form-control" placeholder="Cédula" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="usuario" class="form-label">Usuario</label>
+                        <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo electrónico</label>
+                        <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="contrasena" class="form-label">Contraseña</label>
+                        <input type="password" name="contrasena" id="contrasena" class="form-control" placeholder="Contraseña" required>
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                        <button class="btn btn-dark" type="submit">Registrarse</button>
+                        <a class="btn btn-outline-dark" href="index.php">Volver</a>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 
 </html>
