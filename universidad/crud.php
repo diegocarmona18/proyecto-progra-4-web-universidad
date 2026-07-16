@@ -38,7 +38,7 @@
             <div class="container d-flex justify-content-center align-items-center min-vh-100 py-4">
                 <div class="card shadow-sm w-100" style="max-width: 480px;">
                     <div class="card-body p-4">
-                        <form action="registrar.php" method="post">
+                        <form>
                             <a class="btn btn-outline-dark mb-2" href="index.php">Volver</a>
                             <img src="../img/logo.png" alt="Logo de la universidad" class="img-fluid mb-3 d-block mx-auto" style="max-width: 180px;">
                             <h1 class="sistemacrud">Sistema de Gestión de usuarios</h1>
