@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
             <nav class="navbar w-100">
                 <div class="container-fluid">
                     <button class="btn btn-outline-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
-                        <span class="navbar-toggler-icon"></span> 
+                        <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
             </nav>
@@ -24,11 +24,11 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-3"><a href="create.php" class="nav-link"><i class="bi bi-plus-circle"></i> Inicio</a></li>
-                        <li class="nav-item mb-3"><a href="ver.php" class="nav-link"><i class="bi bi-eye"></i> Registrarse</a></li>
-                        <li class="nav-item mb-3"><a href="actualizar.php" class="nav-link"><i class="bi bi-pencil-square"></i> Notas</a></li>
-                        <li class="nav-item mb-3"><a href="eliminar.php" class="nav-link"><i class="bi bi-trash"></i> Docentes </a></li>
-                        <li class="nav-item mb-3"><a href="eliminar.php" class="nav-link"><i class="bi bi-trash"></i> Estudiantes </a></li>
+                        <li class="nav-item mb-3"><a href="index.php" class="nav-link"><i class="bi bi-plus-circle"></i> Inicio</a></li>
+                        <li class="nav-item mb-3"><a href="registro.php" class="nav-link"><i class="bi bi-eye"></i> Registrar usuario</a></li>
+                        <li class="nav-item mb-3"><a href="ver.php" class="nav-link"><i class="bi bi-eye"></i> Ver usuarios</a></li>
+                        <li class="nav-item mb-3"><a href="actualizar.php" class="nav-link"><i class="bi bi-pencil-square"></i> Actualizar usuario</a></li>
+                        <li class="nav-item mb-3"><a href="eliminar.php" class="nav-link"><i class="bi bi-trash"></i> Eliminar usuario</a></li>
                     </ul>
                 </div>
             </div>
@@ -42,14 +42,11 @@
                             <a class="btn btn-outline-dark mb-2" href="index.php">Volver</a>
                             <img src="../img/logo.png" alt="Logo de la universidad" class="img-fluid mb-3 d-block mx-auto" style="max-width: 180px;">
                             <h1 class="sistemacrud">Sistema de Gestión de usuarios</h1>
-                            <!-- Botones del CRUD: más abajo, separados y en azul -->
                             <div class="mt-4">
-                                
                                 <a class="btn btn-primary d-block mb-2" href="crear.php">Crear usuario</a>
                                 <a class="btn btn-primary d-block mb-2" href="ver.php">Ver usuarios</a>
                                 <a class="btn btn-primary d-block mb-2" href="actualizar.php">Actualizar usuario</a>
                                 <a class="btn btn-primary d-block" href="eliminar.php">Eliminar usuario</a>
-                            </div>
                             </div>
                         </form>
                     </div>

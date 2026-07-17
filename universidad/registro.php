@@ -24,39 +24,26 @@
 
                     <div class="mb-3">
                         <label class="form-label">Código de Usuario</label>
-                        <input type="text"
-                            name="usu_codigo"
-                            class="form-control"
-                            required>
+                        <input type="text" name="usu_codigo" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Nombre Completo</label>
-                        <input type="text"
-                            name="usu_nombre"
-                            class="form-control"
-                            required>
+                        <input type="text" name="usu_nombre" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Correo</label>
-                        <input type="email"
-                            name="usu_correo"
-                            class="form-control"
-                            required>
+                        <input type="email" name="usu_correo" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Contraseña</label>
-                        <input type="password"
-                            name="usu_clave"
-                            class="form-control"
-                            required>
+                        <input type="password" name="usu_clave" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Rol</label>
-
                         <select name="id_rol" class="form-select">
                             <option value="1">Administrador</option>
                             <option value="2">Profesor</option>
