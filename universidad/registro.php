@@ -61,6 +61,7 @@
             </div>
         </div>
     </div>
+
     <script>
         document.getElementById("registroForm").addEventListener("submit", function(e) {
             const cedula = document.getElementById("cedula").value.trim();

@@ -59,7 +59,9 @@ body {
   border-radius: 10px;
 }
 
-h1, h2, label {
+h1,
+h2,
+label {
   color: #0f4c81;
 }
 
@@ -91,4 +93,29 @@ img {
     display: grid !important;
     gap: 0.75rem;
   }
+}
+.offcanvas {
+background:#20364f;
+}
+.offcanvas-body {
+color:#ffffff;
+}
+.nav-link {
+  color: #ffffff !important;
+}
+
+.btn-outline-primary {
+  border-color: #6c757d;
+  background-color: #20364f;
+}
+.sistemacrud{
+  color: #000000;
+  text-align: center;
+  margin-top: 20px;
+}
+.h1_bienvenida {
+  background-color: #050505;
+  color: #000000;
+  text-align: center;
+  margin-top: 20px;
 }

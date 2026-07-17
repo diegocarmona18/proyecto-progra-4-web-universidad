@@ -1,119 +1,134 @@
 <?php
 
-/* Conexion de sesion */
-require_once 'config.php';
+require_once("config.php");
 session_start();
 
-/* Datos del Formulario */
-$usuario_input = isset($_POST['usuario']) ? trim($_POST['usuario']) : '';
-$contrasena_input = isset($_POST['contrasena']) ? $_POST['contrasena'] : '';
+$usuario_input = trim($_POST['usuario'] ?? '');
+$contrasena_input = trim($_POST['contrasena'] ?? '');
 
-/* Validacion que los Campos No esten Vacios*/
-if ($usuario_input === '' || $contrasena_input === '') {
-
-    $_SESSION['error'] = 'Usuario o contraseña faltantes';
-    header('Location: index.php');
-    exit;
+if (empty($usuario_input) || empty($contrasena_input)) {
+    $_SESSION['error'] = "Debe ingresar usuario y contraseña";
+    header("Location: index.php");
+    exit();
 }
 
-/* Busqueda del Usuario en BD */
+/*
+|--------------------------------------------------------------------------
+| Buscar usuario por usu_codigo
+|--------------------------------------------------------------------------
+*/
+
 $stmt = $pdo->prepare("
     SELECT *
-    FROM inicio_sesion
-    WHERE usuario = :usuario
+    FROM t_usuario
+    WHERE usu_codigo = :usuario
 ");
 
 $stmt->execute([
-    'usuario' => $usuario_input
+    ':usuario' => $usuario_input
 ]);
 
-$row = $stmt->fetch();
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-
-/* Si usuario no Existe*/
-if (!$row) {
-
-    $_SESSION['error'] = 'Usuario o contraseña incorrectos';
-    header('Location: index.php');
-    exit;
+if (!$usuario) {
+    $_SESSION['error'] = "Usuario no encontrado";
+    header("Location: index.php");
+    exit();
 }
 
-/* Verificar si el usuario ya está bloqueado */
-if (
-    isset($row['estado']) &&
-    $row['estado'] === 'B'
-) {
+/*
+|--------------------------------------------------------------------------
+| Validar si está bloqueado
+|--------------------------------------------------------------------------
+*/
 
-    $_SESSION['error'] = 'Usuario bloqueado por demasiados intento fallidos';
-    header('Location: index.php');
-    exit;
+if ($usuario['usu_estado'] == 'B') {
+    $_SESSION['error'] = "Usuario bloqueado";
+    header("Location: index.php");
+    exit();
 }
 
-/* Verificar contraseña */
-if (
-    isset($row['contrasena']) &&
-    password_verify($contrasena_input, $row['contrasena'])
-) {
+/*
+|--------------------------------------------------------------------------
+| Verificar contraseña
+|--------------------------------------------------------------------------
+*/
 
-     /*Reiniciar contador de intentos cuando digita bien la contraseña*/
+if (password_verify($contrasena_input, $usuario['usu_clave'])) {
+    /*
+    | Reiniciar intentos
+    */
+
     $stmt = $pdo->prepare("
-        UPDATE inicio_sesion
-        SET intentos = 0
-        WHERE usuario = :usuario
+        UPDATE t_usuario
+        SET usu_intentofallido = 0
+        WHERE id_usuario = :id
     ");
 
     $stmt->execute([
-        'usuario' => $usuario_input
+        ':id' => $usuario['id_usuario']
     ]);
 
     session_regenerate_id(true);
 
-    $_SESSION['user_id'] = $row['cedula'];
-    $_SESSION['username'] = $row['usuario'];
-    
-    
-    /* Redirige la pagina */
-    header('Location: inicio.php');
-    exit;
+    $_SESSION['id_usuario'] = $usuario['id_usuario'];
+    $_SESSION['usu_codigo'] = $usuario['usu_codigo'];
+    $_SESSION['usu_nombre'] = $usuario['usu_nombre'];
+    $_SESSION['id_rol'] = $usuario['id_rol'];
+    if ($usuario['id_rol'] == 1) {
+        header("Location: crud.php");
+        exit();
+    } elseif ($usuario['id_rol'] == 2) {
+        header("Location: inicio.php");
+        exit();
+    } elseif ($usuario['id_rol'] == 3) {
+        header("Location: inicio.php");
+        exit();
+    } else {
+        $intentos = $usuario['usu_intentofallido'] + 1;
+
+        /*
+        |--------------------------------------------------------------------------
+        | Si llega a 3 intentos bloquea
+        |--------------------------------------------------------------------------
+        */
+
+        if ($intentos >= 3) {
+            $stmt = $pdo->prepare("
+            UPDATE t_usuario
+            SET
+                usu_intentofallido = 3,
+                usu_estado = 'B'
+            WHERE id_usuario = :id
+        ");
+
+            $stmt->execute([
+                ':id' => $usuario['id_usuario']
+            ]);
+
+            $_SESSION['error'] =
+                "Usuario bloqueado por exceder los intentos permitidos";
+        } else {
+            $stmt = $pdo->prepare("
+            UPDATE t_usuario
+            SET usu_intentofallido = :intentos
+            WHERE id_usuario = :id
+        ");
+
+            $stmt->execute([
+                ':intentos' => $intentos,
+                ':id' => $usuario['id_usuario']
+            ]);
+
+            $_SESSION['error'] =
+                "Usuario o contraseña incorrectos. Intento ($intentos/3)";
+        }
+
+        header("Location: index.php");
+        exit();
+    }
+
+    header("Location: index.php");
+    exit();
 }
 
-/* Incrementa cantidad de intentos*/
-$intento = $row['intentos'] + 1;
-
-if ($intento > 3) {
-    $intento = 3;
-}
-
-/* Actualiza el contador*/
-$stmt = $pdo->prepare("
-    UPDATE inicio_sesion
-    SET intentos = :intento
-    WHERE usuario = :usuario
-");
-
-$stmt->execute([
-    'intento' => $intento,
-    'usuario' => $usuario_input
-]);
-
-/* Bloquedo de Usuario */
-if ($intento > 3) {
-
-    $stmt = $pdo->prepare("
-        UPDATE inicio_sesion
-        SET estado = 'B'
-        WHERE usuario = :usuario
-    ");
-
-    $stmt->execute([
-        'usuario' => $usuario_input
-    ]);
-
-    $_SESSION['error'] = 'Usuario bloqueado por demasiados intento fallidos';
-    header('Location: index.php');
-    exit;
-}
-
-$_SESSION['error'] = "Usuario o contraseña incorrectos. Queda $intento intentos de 3";
-header('Location: index.php');
-exit;

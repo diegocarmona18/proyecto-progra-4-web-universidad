@@ -1,34 +1,76 @@
 <?php
+
 require_once 'config.php';
 
-// Tomar y validar entradas
-$cedula = filter_input(INPUT_POST, 'cedula', FILTER_SANITIZE_NUMBER_INT);
-$usuario = isset($_POST['usuario']) ? trim($_POST['usuario']) : '';
-$correo = filter_input(INPUT_POST, 'correo', FILTER_VALIDATE_EMAIL);
-$contrasena = isset($_POST['contrasena']) ? $_POST['contrasena'] : '';
+$usu_codigo  = trim($_POST['usu_codigo'] ?? '');
+$usu_nombre  = trim($_POST['usu_nombre'] ?? '');
+$usu_correo  = filter_input(INPUT_POST,'usu_correo',FILTER_VALIDATE_EMAIL);
+$usu_clave   = $_POST['usu_clave'] ?? '';
+$id_rol      = intval($_POST['id_rol'] ?? 0);
 
-if (empty($cedula) || $usuario === '' || $correo === false || $contrasena === '') {
-	header('Location: registro.php?error=missing');
-	exit;
+if(
+    empty($usu_codigo) ||
+    empty($usu_nombre) ||
+    !$usu_correo ||
+    empty($usu_clave) ||
+    $id_rol <= 0
+)
+{
+    header("Location: registro.php?error=datos");
+    exit();
 }
 
-// Hashear la contraseña antes de guardar
-$hashed = password_hash($contrasena, PASSWORD_DEFAULT);
+$clave_hash = password_hash(
+    $usu_clave,
+    PASSWORD_DEFAULT
+);
 
-$sql = 'INSERT INTO inicio_sesion (cedula, usuario, correo, contrasena) VALUES (:cedula, :usuario, :correo, :contrasena)';
+$sql = "
+INSERT INTO t_usuario
+(
+    usu_codigo,
+    usu_nombre,
+    usu_correo,
+    usu_clave,
+    id_rol,
+    usu_intentofallido,
+    usu_estado,
+    usu_fechahorareg,
+    usu_usuarioreg
+)
+VALUES
+(
+    :usu_codigo,
+    :usu_nombre,
+    :usu_correo,
+    :usu_clave,
+    :id_rol,
+    0,
+    'A',
+    NOW(),
+    1
+)
+";
+
 $stmt = $pdo->prepare($sql);
 
-try {
-	$stmt->execute([
-		'cedula' => $cedula,
-		'usuario' => $usuario,
-		'correo' => $correo,
-		'contrasena' => $hashed,
-	]);
-	header('Location: index.php');
-	exit;
-} catch (PDOException $e) {
-	header('Location: registro.php?error=' . urlencode($e->getMessage()));
-	exit;
+try
+{
+    $stmt->execute([
+
+        ':usu_codigo' => $usu_codigo,
+        ':usu_nombre' => $usu_nombre,
+        ':usu_correo' => $usu_correo,
+        ':usu_clave'  => $clave_hash,
+        ':id_rol'     => $id_rol
+
+    ]);
+
+    header("Location: index.php");
+    exit();
+
 }
-?>
+catch(PDOException $e)
+{
+    die($e->getMessage());
+}
