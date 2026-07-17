@@ -127,5 +127,8 @@ if (password_verify($contrasena_input, $usuario['usu_clave'])) {
         header("Location: index.php");
         exit();
     }
+
+    header("Location: index.php");
+    exit();
 }
 
