@@ -23,23 +23,32 @@
                     <h1 class="h3 text-center mb-4">REGISTRO DE USUARIO</h1>
 
                     <div class="mb-3">
-                        <label for="cedula" class="form-label">Número de cédula</label>
-                        <input type="text" name="cedula" id="cedula" class="form-control" placeholder="Cédula" required>
+                        <label class="form-label">Código de Usuario</label>
+                        <input type="text" name="usu_codigo" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="usuario" class="form-label">Usuario</label>
-                        <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario" required>
+                        <label class="form-label">Nombre Completo</label>
+                        <input type="text" name="usu_nombre" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="correo" class="form-label">Correo electrónico</label>
-                        <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo" required>
+                        <label class="form-label">Correo</label>
+                        <input type="email" name="usu_correo" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="contrasena" class="form-label">Contraseña</label>
-                        <input type="password" name="contrasena" id="contrasena" class="form-control" placeholder="Contraseña" required>
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" name="usu_clave" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Rol</label>
+                        <select name="id_rol" class="form-select">
+                            <option value="1">Administrador</option>
+                            <option value="2">Profesor</option>
+                            <option value="3">Estudiante</option>
+                        </select>
                     </div>
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
