@@ -49,7 +49,7 @@
                     <h1 class="h3 text-center mb-4">CREACIÓN DE USUARIO</h1>
 
                     <div class="mb-3">
-                        <label class="form-label">Código de Usuario</label>
+                        <label class="form-label">Nombre de Usuario</label>
                         <input type="text"
                             name="usu_codigo"
                             class="form-control"
