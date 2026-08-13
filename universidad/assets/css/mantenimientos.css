@@ -1,0 +1,294 @@
+/* ==========================================================
+   MODULO DE USUARIOS
+   Estilos compartidos por:
+   - administracion/usuarios.php
+   - administracion/usuario_form.php
+   ========================================================== */
+
+/* ---------- Lista de usuarios ---------- */
+.role-icon {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        border-radius: 15px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1.25rem;
+        box-shadow: 0 8px 18px rgba(9, 43, 76, .16);
+    }
+    .role-admin { background: linear-gradient(135deg, #123f6b, #0b73b9); }
+    .role-profesor { background: linear-gradient(135deg, #6f42c1, #9b6fe8); }
+    .role-estudiante { background: linear-gradient(135deg, #0f8f8a, #16b6b1); }
+    .role-general { background: linear-gradient(135deg, #607d8b, #90a4ae); }
+
+    .user-code {
+        font-weight: 700;
+        color: #0a4f82;
+        background: #eaf6fc;
+        border: 1px solid #d1e9f6;
+        border-radius: 9px;
+        padding: 5px 9px;
+        display: inline-block;
+    }
+
+    .action-btn {
+        width: 42px;
+        height: 42px;
+        border: 0;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+        color: #fff;
+    }
+    .action-btn:hover:not(:disabled) {
+        transform: translateY(-2px);
+        color: #fff;
+    }
+    .action-edit {
+        background: linear-gradient(135deg, #0b73b9, #269bd8);
+        box-shadow: 0 7px 16px rgba(11, 115, 185, .22);
+    }
+    .action-unlock {
+        background: linear-gradient(135deg, #129568, #28b783);
+        box-shadow: 0 7px 16px rgba(18, 149, 104, .22);
+    }
+    .action-delete {
+        background: linear-gradient(135deg, #dc3545, #ef6b77);
+        box-shadow: 0 7px 16px rgba(220, 53, 69, .20);
+    }
+    .action-btn:disabled {
+        background: #d9e1e7;
+        color: #8b9aa6;
+        cursor: not-allowed;
+        box-shadow: none;
+        opacity: .72;
+    }
+
+    .confirm-modal .modal-content {
+        border: 0;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 24px 70px rgba(9, 43, 76, .24);
+    }
+    .confirm-modal-header {
+        padding: 26px 28px 18px;
+        background: linear-gradient(120deg, #0b4770, #0b73b9, #16b6b1);
+        color: #fff;
+    }
+    .confirm-modal-icon {
+        width: 58px;
+        height: 58px;
+        border-radius: 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, .16);
+        border: 1px solid rgba(255, 255, 255, .22);
+        font-size: 1.6rem;
+    }
+    .confirm-user-box {
+        background: #f2f8fb;
+        border: 1px solid #dcecf4;
+        border-radius: 16px;
+        padding: 14px 16px;
+        color: #15314a;
+    }
+    .btn-confirm-unlock {
+        background: linear-gradient(135deg, #129568, #28b783);
+        color: #fff;
+        border: 0;
+        border-radius: 12px;
+        font-weight: 700;
+        padding: 11px 20px;
+    }
+    .btn-confirm-delete {
+        background: linear-gradient(135deg, #dc3545, #ef6b77);
+        color: #fff;
+        border: 0;
+        border-radius: 12px;
+        font-weight: 700;
+        padding: 11px 20px;
+    }
+    .btn-modal-cancel {
+        border-radius: 12px;
+        padding: 11px 20px;
+        background: #eef3f6;
+        color: #39566d;
+        border: 0;
+        font-weight: 700;
+    }
+
+    .users-table tbody tr:hover {
+        background: #f8fcfe;
+    }
+
+/* ---------- Crear / modificar usuario ---------- */
+.user-form-hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(120deg, #0a4771 0%, #0b73b9 58%, #16b6b1 100%);
+    color: #fff;
+    border-radius: 26px;
+    padding: 30px 34px;
+    box-shadow: 0 20px 45px rgba(11, 115, 185, .22);
+}
+.user-form-hero::after {
+    content: "";
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    right: -55px;
+    top: -90px;
+    background: rgba(255, 216, 90, .25);
+}
+.hero-form-icon {
+    width: 62px;
+    height: 62px;
+    border-radius: 19px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    background: rgba(255,255,255,.16);
+    border: 1px solid rgba(255,255,255,.22);
+}
+.form-shell {
+    background: #fff;
+    border: 1px solid #dce8ef;
+    border-radius: 24px;
+    box-shadow: 0 18px 42px rgba(9, 43, 76, .10);
+    overflow: hidden;
+}
+.form-section {
+    padding: 28px 30px;
+    border-bottom: 1px solid #edf2f5;
+}
+.form-section:last-child { border-bottom: 0; }
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+.section-heading span {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #0b73b9;
+    background: #e8f5fb;
+    font-size: 1.1rem;
+}
+.field-wrap { position: relative; }
+.field-wrap > i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6f9bb7;
+    z-index: 2;
+}
+.field-wrap .form-control,
+.field-wrap .form-select {
+    min-height: 53px;
+    padding-left: 46px;
+    border-radius: 14px;
+    border-color: #cddde7;
+}
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 10px;
+    background: #edf5f9;
+    color: #315f7e;
+    z-index: 3;
+}
+.status-option {
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+.status-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.status-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 76px;
+    border: 2px solid #dbe6ec;
+    border-radius: 16px;
+    padding: 14px 16px;
+    transition: .18s ease;
+}
+.status-card i {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+}
+.status-option input:checked + .status-active-card {
+    border-color: #1ba673;
+    background: #effbf6;
+    box-shadow: 0 8px 20px rgba(27,166,115,.12);
+}
+.status-active-card i { background: #daf5e9; color: #16845d; }
+.status-option input:checked + .status-inactive-card {
+    border-color: #e1a328;
+    background: #fff9ec;
+    box-shadow: 0 8px 20px rgba(225,163,40,.12);
+}
+.status-inactive-card i { background: #fff0c9; color: #a56d00; }
+.blocked-notice {
+    border-radius: 16px;
+    background: #fff1f3;
+    color: #9f2433;
+    border: 1px solid #f5cbd1;
+    padding: 15px 17px;
+}
+.btn-save-user {
+    border: 0;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 14px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #0b73b9, #16b6b1);
+    box-shadow: 0 10px 22px rgba(11,115,185,.22);
+}
+.btn-save-user:hover { color:#fff; transform: translateY(-1px); }
+.btn-cancel-user {
+    border: 0;
+    font-weight: 700;
+    border-radius: 14px;
+    padding: 12px 24px;
+    background: #edf3f6;
+    color: #39566d;
+}
+.password-help {
+    background: #f5f9fb;
+    border: 1px solid #dfebf1;
+    border-radius: 14px;
+    padding: 13px 15px;
+    color: #5a7284;
+}
+@media (max-width: 767.98px) {
+    .form-section { padding: 22px 18px; }
+    .user-form-hero { padding: 25px 22px; }
+}
